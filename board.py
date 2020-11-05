@@ -1,22 +1,21 @@
 import pygame
+import random
 from cell import Cell
 
 class Board:
 
-    # Constants
-    ROWS = 100
-    COLUMNS = 200
-
     # Constructor
-    def __init__(self):
-        self.grid = [[Cell() for column in range(self.COLUMNS)] for row in range(self.ROWS)]
+    def __init__(self, rows, columns):
+        self.rows = rows
+        self.columns = columns
+        self.grid = [[Cell(column*Cell.get_width(), row*Cell.get_width()) for column in range(self.columns)] for row in range(self.rows)]
         self.generate_random()
 
     # Generate states of the cells randomly
     def generate_random(self):
-        for row in range(self.ROWS):
-            for column in range(self.COLUMNS):
-                chance = randint(0, 1):
+        for row in range(self.rows):
+            for column in range(self.columns):
+                chance = random.randint(0, 1)
                 if chance == 1:
                     cell = self.grid[row][column]
                     cell.revive()
@@ -40,9 +39,9 @@ class Board:
                 valid = True
                 if (neighbour_row == check_row) and (neighbour_column == check_column):
                     valid = False
-                elif (neighbour_row < 0) or (neighbour_row >= self.ROWS):
+                elif (neighbour_row < 0) or (neighbour_row >= self.rows):
                     valid = False
-                elif (neighbour_column < 0) or (neighbour_column >= self.COLUMNS):
+                elif (neighbour_column < 0) or (neighbour_column >= self.columns):
                     valid = False
 
                 # If neighbour is valid, store it
@@ -59,8 +58,8 @@ class Board:
         revive = []
         kill = []
 
-        for row in range(self.ROWS):
-            for column in range(self.COLUMNS):
+        for row in range(self.rows):
+            for column in range(self.columns):
 
                 # Get Neighbours
                 neighbours = self.get_neighbours(row, column)
@@ -94,7 +93,7 @@ class Board:
 
     # Draw Board
     def draw(self, window):
-        for row in range(self.ROWS):
-            for column in range(self.COLUMNS):
-                cell = self.grid[row][cell]
+        for row in range(self.rows):
+            for column in range(self.columns):
+                cell = self.grid[row][column]
                 cell.draw(window)

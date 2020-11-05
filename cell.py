@@ -12,6 +12,7 @@ class Cell(pygame.Rect):
         self.x = x
         self.y = y
         self.status = Status.DEAD
+        super().__init__(x, y, self.WIDTH, self.WIDTH)
 
     # Set the status of the cell to dead
     def kill(self):
@@ -19,7 +20,7 @@ class Cell(pygame.Rect):
 
     # Set the status of the cell to alive
     def revive(self):
-        self.status = Status.alive
+        self.status = Status.ALIVE
 
     # Check if the cell is alive
     def is_alive(self):
@@ -34,4 +35,4 @@ class Cell(pygame.Rect):
 
     # Get the cell width
     def get_width():
-        return WIDTH
+        return Cell.WIDTH
