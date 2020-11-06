@@ -17,13 +17,11 @@ The rules of the simulation are as follows:
 3. Any live cell with more than three live neighbours dies, as if by overpopulation.
 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
-These rules, which compare the behavior of the automaton to real life occur simultaneously across a "tick", meaning births and deaths occur simultaneously. They can be condensed into the following logic:
+These rules, which compare the behavior of the automaton to real life occur simultaneously across a "tick", meaning births and deaths occur simultaneously. They can be condensed into the following code logic:
 
 1. Any live cell with two or three live neighbours survives.
 2. Any dead cell with three live neighbours becomes a live cell.
 3. All other live cells die in the next generation. Similarly, all other dead cells stay dead.
-
-The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed; births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick. Each generation is a pure function of the preceding one. The rules continue to be applied repeatedly to create further generations.
 
 ## Example
 

@@ -13,6 +13,7 @@ class GameOfLife:
     # Constructor
     def __init__(self):
 
+        # Initialise pygame
         pygame.init()
         pygame.display.set_caption('The Game of Life')
 
